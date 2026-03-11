@@ -22,7 +22,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/qrdlogo2.png"
+              src="/logo2.png"
               alt="Qrd Tech"
               className="h-16 w-auto"
             />
