@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Send, CheckCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const volumeOptions = [
   { value: "under-5k", label: "Under 5,000" },
@@ -71,7 +71,7 @@ export function QuoteForm() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 25 }}
-        className="rounded-xl border border-border bg-white p-12 text-center shadow-sm"
+        className="rounded-sm border border-border bg-white p-12 text-center"
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -81,7 +81,7 @@ export function QuoteForm() {
         >
           <CheckCircle className="h-8 w-8 text-success" />
         </motion.div>
-        <h3 className="text-xl font-bold text-navy">Quote Request Received</h3>
+        <h3 className="text-xl font-bold text-ink">Quote Request Received</h3>
         <p className="mt-2 text-text-muted">
           Thank you! Our team will review your requirements and get back to you
           within one business day.
@@ -93,12 +93,12 @@ export function QuoteForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-xl border border-border bg-white p-6 shadow-sm sm:p-8"
+      className="rounded-sm border border-border bg-white p-6 sm:p-8"
     >
       <div className="space-y-8">
         {/* Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold text-navy">Contact Information</h3>
+          <h3 className="text-base font-semibold text-ink">Contact Information</h3>
           <div className="mt-4 space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
@@ -107,7 +107,7 @@ export function QuoteForm() {
                   id="quote-name"
                   {...register("name")}
                   placeholder="John Smith"
-                  className="mt-1"
+                  className="mt-1 rounded-sm"
                 />
                 {errors.name && (
                   <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
@@ -119,7 +119,7 @@ export function QuoteForm() {
                   id="quote-company"
                   {...register("company")}
                   placeholder="Acme Corp"
-                  className="mt-1"
+                  className="mt-1 rounded-sm"
                 />
                 {errors.company && (
                   <p className="mt-1 text-sm text-red-500">{errors.company.message}</p>
@@ -134,7 +134,7 @@ export function QuoteForm() {
                   type="email"
                   {...register("email")}
                   placeholder="john@acme.com"
-                  className="mt-1"
+                  className="mt-1 rounded-sm"
                 />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
@@ -147,7 +147,7 @@ export function QuoteForm() {
                   type="tel"
                   {...register("phone")}
                   placeholder="(555) 000-0000"
-                  className="mt-1"
+                  className="mt-1 rounded-sm"
                 />
               </div>
             </div>
@@ -156,7 +156,7 @@ export function QuoteForm() {
 
         {/* Volume */}
         <div>
-          <h3 className="text-lg font-semibold text-navy">Pieces Per Run *</h3>
+          <h3 className="text-base font-semibold text-ink">Pieces Per Run *</h3>
           <p className="mt-1 text-sm text-text-muted">
             Approximately how many pieces per run?
           </p>
@@ -168,7 +168,7 @@ export function QuoteForm() {
             {volumeOptions.map((opt) => (
               <label
                 key={opt.value}
-                className="flex cursor-pointer items-center gap-3 rounded-lg border border-border p-3 transition-colors hover:bg-surface"
+                className="flex cursor-pointer items-center gap-3 rounded-sm border border-border p-3 transition-colors hover:bg-surface"
               >
                 <RadioGroupItem value={opt.value} />
                 <span className="text-sm">{opt.label}</span>
@@ -182,7 +182,7 @@ export function QuoteForm() {
 
         {/* Frequency */}
         <div>
-          <h3 className="text-lg font-semibold text-navy">Frequency *</h3>
+          <h3 className="text-base font-semibold text-ink">Frequency *</h3>
           <p className="mt-1 text-sm text-text-muted">How often do you mail?</p>
           <RadioGroup
             value={frequency}
@@ -192,7 +192,7 @@ export function QuoteForm() {
             {frequencyOptions.map((opt) => (
               <label
                 key={opt.value}
-                className="flex cursor-pointer items-center gap-3 rounded-lg border border-border p-3 transition-colors hover:bg-surface"
+                className="flex cursor-pointer items-center gap-3 rounded-sm border border-border p-3 transition-colors hover:bg-surface"
               >
                 <RadioGroupItem value={opt.value} />
                 <span className="text-sm">{opt.label}</span>
@@ -211,7 +211,7 @@ export function QuoteForm() {
             id="quote-notes"
             {...register("notes")}
             placeholder="Any details about your mail requirements..."
-            className="mt-1"
+            className="mt-1 rounded-sm"
             rows={4}
           />
         </div>
@@ -220,7 +220,7 @@ export function QuoteForm() {
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full bg-teal text-white hover:bg-teal-hover"
+            className="w-full bg-qrd-accent text-white hover:bg-accent-hover rounded-sm"
           >
             {submitting ? "Submitting..." : "Request a Quote"}
             {!submitting && <Send className="ml-2 h-4 w-4" />}

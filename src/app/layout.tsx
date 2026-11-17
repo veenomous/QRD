@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/data/site-metadata";
 import { organizationSchema } from "@/lib/structured-data";
 
@@ -11,8 +9,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
@@ -42,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${geistMono.variable} antialiased font-sans`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans`}
       >
         <script
           type="application/ld+json"
@@ -50,9 +48,7 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema()),
           }}
         />
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
