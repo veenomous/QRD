@@ -8,6 +8,15 @@ export function organizationSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.description,
+    email: siteConfig.contact.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.contact.address.street,
+      addressLocality: siteConfig.contact.address.city,
+      addressRegion: siteConfig.contact.address.region,
+      postalCode: siteConfig.contact.address.postalCode,
+      addressCountry: "US",
+    },
     contactPoint: {
       "@type": "ContactPoint",
       telephone: siteConfig.contact.phone,
@@ -25,7 +34,11 @@ export function localBusinessSchema() {
     description: siteConfig.description,
     address: {
       "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address,
+      streetAddress: siteConfig.contact.address.street,
+      addressLocality: siteConfig.contact.address.city,
+      addressRegion: siteConfig.contact.address.region,
+      postalCode: siteConfig.contact.address.postalCode,
+      addressCountry: "US",
     },
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,

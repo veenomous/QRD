@@ -22,7 +22,13 @@ export const siteConfig = {
   ],
   contact: {
     email: "info@qrdtech.com",
-    phone: "(555) 000-0000",
-    address: "123 Business Ave, Suite 100, City, ST 00000",
+    phone: "(754) 800-3723",
+    phoneHref: "tel:+17548003723",
+    address: {
+      street: "1379 SW 12th Ave",
+      city: "Pompano Beach",
+      region: "FL",
+      postalCode: "33069",
+    },
   },
 } as const;

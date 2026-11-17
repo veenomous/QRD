@@ -1,4 +1,4 @@
-import { Clock, Mail, ShieldCheck } from "lucide-react";
+import { Clock, Phone, ShieldCheck } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import { QuoteForm } from "@/components/forms/quote-form";
 import { siteConfig } from "@/data/site-metadata";
@@ -29,15 +29,23 @@ export function QuoteSection() {
               </span>
             </li>
             <li className="flex items-start gap-3.5">
-              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-qrd-accent" strokeWidth={1.75} />
+              <Phone className="mt-0.5 h-5 w-5 shrink-0 text-qrd-accent" strokeWidth={1.75} />
               <span>
-                Rather email?{" "}
+                Rather talk it through? Call{" "}
+                <a
+                  href={siteConfig.contact.phoneHref}
+                  className="focus-accent whitespace-nowrap rounded-sm font-semibold underline decoration-ink/25 underline-offset-4 transition-colors hover:decoration-ink"
+                >
+                  {siteConfig.contact.phone}
+                </a>{" "}
+                or email{" "}
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
                   className="focus-accent rounded-sm font-semibold underline decoration-ink/25 underline-offset-4 transition-colors hover:decoration-ink"
                 >
                   {siteConfig.contact.email}
                 </a>
+                .
               </span>
             </li>
           </ul>
