@@ -4,7 +4,7 @@ import { siteConfig } from "@/data/site-metadata";
 const links = [
   { href: "#mail", label: "What we mail" },
   { href: "#how", label: "How it works" },
-  { href: "#why", label: "Why Qrd Tech" },
+  { href: "#why", label: "Why Qrd Mail" },
   { href: "#quote", label: "Get a quote" },
 ];
 
@@ -18,8 +18,8 @@ export function LandingFooter() {
           {/* Brand */}
           <div>
             <Image
-              src="/logo2.png"
-              alt="Qrd Tech"
+              src="/logo-qrdmail.png"
+              alt="Qrd Mail"
               width={140}
               height={43}
               className="h-10 w-auto"

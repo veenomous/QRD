@@ -36,7 +36,7 @@ Additional Notes: ${data.notes ?? "None"}
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: "Qrd Tech Website <noreply@qrdtech.com>",
+        from: "Qrd Mail Website <noreply@qrdtech.com>",
         to: [NOTIFY_EMAIL],
         subject: `Quote Request: ${data.company} - ${data.volumeRange} pieces (${data.frequency})`,
         text: emailBody,

@@ -6,7 +6,7 @@ import Image from "next/image";
 const links = [
   { href: "#mail", label: "What we mail" },
   { href: "#how", label: "How it works" },
-  { href: "#why", label: "Why Qrd Tech" },
+  { href: "#why", label: "Why Qrd Mail" },
 ];
 
 export function LandingNavbar() {
@@ -32,8 +32,8 @@ export function LandingNavbar() {
       >
         <a href="#top" className="focus-accent rounded-sm">
           <Image
-            src="/logo2.png"
-            alt="Qrd Tech"
+            src="/logo-qrdmail.png"
+            alt="Qrd Mail"
             width={140}
             height={43}
             className="h-11 w-auto"

@@ -34,7 +34,7 @@ export function LandingHero() {
           </h1>
 
           <p className="rise mt-6 max-w-xl text-lg leading-relaxed text-text-muted [--delay:160ms]">
-            Qrd Tech prints, folds, inserts, and mails your bills, statements,
+            Qrd Mail prints, folds, inserts, and mails your bills, statements,
             collection letters, and rent notices, usually within 24–48 hours of
             getting your file.
           </p>
