@@ -5,6 +5,9 @@ export const quoteFormSchema = z.object({
   company: z.string().min(2, "Company name is required"),
   email: z.email("Valid email is required"),
   phone: z.string().optional(),
+  mailTypes: z
+    .array(z.enum(["bills", "statements", "collections", "rent", "other"]))
+    .optional(),
   volumeRange: z.enum(["under-5k", "5k-25k", "25k-100k", "100k-500k", "500k-plus"]),
   frequency: z.enum(["one-time", "weekly", "bi-weekly", "monthly", "daily"]),
   notes: z.string().optional(),

@@ -1,79 +1,51 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { Clock, Mail, ShieldCheck } from "lucide-react";
+import { AnimatedSection } from "@/components/shared/animated-section";
 import { QuoteForm } from "@/components/forms/quote-form";
-import { Check, ShieldCheck } from "lucide-react";
-
-const trustPoints = [
-  "10M+ pieces mailed annually",
-  "99.9% production accuracy rate",
-  "24–48 hour standard turnaround",
-  "HIPAA-ready workflows & BAAs",
-  "SOC 2 compliant operations",
-  "Piece-level tracking & audit trails",
-];
+import { siteConfig } from "@/data/site-metadata";
 
 export function QuoteSection() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="quote" ref={ref} className="py-20 md:py-28 bg-surface">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
-          className="mb-14"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-text-muted">
-            Get Started
-          </p>
-          <h2 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-ink">
-            Get a Custom Quote
+    <section id="quote" className="scroll-mt-20 bg-warm-white py-20 md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <AnimatedSection className="lg:sticky lg:top-28 lg:self-start">
+          <p className="text-sm font-semibold text-qrd-accent">Get a quote</p>
+          <h2 className="display mt-3 text-4xl leading-[1.1] text-ink md:text-5xl">
+            Tell us what you mail. We&apos;ll send you a price.
           </h2>
-        </motion.div>
+          <p className="mt-5 text-lg leading-relaxed text-text-muted">
+            A few details are enough to quote most jobs.
+          </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Trust signals */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.1 }}
-          >
-            <p className="text-ink leading-relaxed">
-              Tell us about your mail volume and we&apos;ll build a custom
-              proposal. Most clients see a response within one business day.
-            </p>
+          <ul className="mt-10 space-y-5 text-ink">
+            <li className="flex items-start gap-3.5">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-qrd-accent" strokeWidth={1.75} />
+              <span>You&apos;ll hear back within one business day.</span>
+            </li>
+            <li className="flex items-start gap-3.5">
+              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-qrd-accent" strokeWidth={1.75} />
+              <span>
+                Don&apos;t send customer data here. We set up a secure transfer
+                once you&apos;re ready to run.
+              </span>
+            </li>
+            <li className="flex items-start gap-3.5">
+              <Mail className="mt-0.5 h-5 w-5 shrink-0 text-qrd-accent" strokeWidth={1.75} />
+              <span>
+                Rather email?{" "}
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="focus-accent rounded-sm font-semibold underline decoration-ink/25 underline-offset-4 transition-colors hover:decoration-ink"
+                >
+                  {siteConfig.contact.email}
+                </a>
+              </span>
+            </li>
+          </ul>
+        </AnimatedSection>
 
-            <ul className="mt-8 space-y-4">
-              {trustPoints.map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <Check className="h-4 w-4 mt-0.5 text-qrd-accent flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-ink">{point}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex items-center gap-3 border-t border-border pt-8">
-              <ShieldCheck className="h-5 w-5 text-text-muted" strokeWidth={1.5} />
-              <p className="text-sm text-text-muted">
-                Your data is handled with enterprise-grade security. We sign BAAs
-                and maintain SOC 2 compliance.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Quote form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
-            <QuoteForm />
-          </motion.div>
-        </div>
+        <AnimatedSection delay={0.1}>
+          <QuoteForm />
+        </AnimatedSection>
       </div>
     </section>
   );

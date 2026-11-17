@@ -1,14 +1,17 @@
 export const siteConfig = {
   name: "Qrd Tech",
-  tagline: "High-Volume Print & Mail Solutions",
+  tagline: "Letter Shop for Bills, Statements & Collection Letters",
   description:
-    "We reliably print, insert, and mail high-volume letters with strict controls, fast turnarounds, and audit-friendly tracking.",
+    "Qrd Tech is a letter shop. We print, insert, and mail your bills, statements, collection letters, and rent notices, usually within 24–48 hours of getting your file.",
   url: "https://qrdtech.com",
-  ogImage: "/og-image.png",
+  ogImage: "/mail-floor.jpg",
   titleTemplate: "%s | Qrd Tech",
-  defaultTitle: "Qrd Tech | High-Volume Print & Mail Solutions",
+  defaultTitle: "Qrd Tech | Letter Shop for Bills, Statements & Collection Letters",
   keywords: [
+    "letter shop",
     "print and mail services",
+    "collection letter mailing",
+    "rent bill mailing",
     "transactional mail",
     "statement printing",
     "collections mail",

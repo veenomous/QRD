@@ -26,6 +26,7 @@ Company: ${data.company}
 Email: ${data.email}
 Phone: ${data.phone ?? "Not provided"}
 
+Mail types: ${data.mailTypes?.length ? data.mailTypes.join(", ") : "Not specified"}
 Volume: ${data.volumeRange}
 Frequency: ${data.frequency}
 

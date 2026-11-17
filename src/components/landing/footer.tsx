@@ -1,64 +1,56 @@
 import Image from "next/image";
 import { siteConfig } from "@/data/site-metadata";
 
+const links = [
+  { href: "#mail", label: "What we mail" },
+  { href: "#how", label: "How it works" },
+  { href: "#why", label: "Why Qrd Tech" },
+  { href: "#quote", label: "Get a quote" },
+];
+
 export function LandingFooter() {
   return (
-    <footer className="bg-ink py-12 md:py-16">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+    <footer className="border-t border-border bg-surface">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:py-14">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
           <div>
             <Image
               src="/logo2.png"
               alt="Qrd Tech"
-              width={120}
-              height={34}
-              className="h-8 w-auto brightness-0 invert"
+              width={140}
+              height={43}
+              className="h-10 w-auto"
             />
-            <p className="mt-3 text-sm text-warm-white/50 leading-relaxed max-w-xs">
-              {siteConfig.description}
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-muted">
+              A letter shop for bills, statements, collection letters, and rent
+              notices.
             </p>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-warm-white/40 mb-4">
-              Contact
-            </h3>
-            <div className="space-y-2 text-sm text-warm-white/70">
-              <p>{siteConfig.contact.email}</p>
-              <p>{siteConfig.contact.phone}</p>
-              <p>{siteConfig.contact.address}</p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-warm-white/40 mb-4">
-              Ready to Start?
-            </h3>
-            <div className="space-y-3">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+            {links.map((link) => (
               <a
-                href="#quote"
-                className="inline-block text-sm text-warm-white/70 hover:text-warm-white transition-colors"
+                key={link.href}
+                href={link.href}
+                className="focus-accent rounded-sm font-medium text-ink/75 transition-colors hover:text-ink"
               >
-                Request a Quote &rarr;
+                {link.label}
               </a>
-              <br />
-              <a
-                href="#quote"
-                className="inline-block text-sm text-warm-white/70 hover:text-warm-white transition-colors"
-              >
-                Book a Call &rarr;
-              </a>
-            </div>
-          </div>
+            ))}
+          </nav>
         </div>
 
-        <div className="mt-12 border-t border-warm-white/10 pt-8">
-          <p className="text-xs text-warm-white/30">
+        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-sm text-text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
+          <a
+            href={`mailto:${siteConfig.contact.email}`}
+            className="focus-accent rounded-sm transition-colors hover:text-ink"
+          >
+            {siteConfig.contact.email}
+          </a>
         </div>
       </div>
     </footer>

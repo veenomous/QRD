@@ -47,52 +47,56 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* Qrd Tech industrial palette */
-  --color-ink: #1A1A1A;
-  --color-warm-white: #FAF9F7;
-  --color-surface: #F2F0ED;
-  --color-surface-alt: #E8E5E1;
-  --color-qrd-accent: #C8102E;
-  --color-accent-hover: #A30D25;
-  --color-accent-subtle: rgba(200, 16, 46, 0.06);
+  /* Qrd Tech palette — logo blues on paper and kraft-envelope neutrals */
+  --color-ink: #0B2239;
+  --color-warm-white: #FBF8F2;
+  --color-surface: #F4EEE3;
+  --color-surface-alt: #E9E1D2;
+  --color-qrd-accent: #1668D6;
+  --color-accent-hover: #0F52AE;
+  --color-accent-subtle: rgba(22, 104, 214, 0.08);
+  --color-sky: #2F9BF2;
+  --color-sky-soft: #E3F0FD;
+  --color-kraft: #C79F63;
+  --color-kraft-soft: #F1E3C9;
   --color-success: #10B981;
-  --color-text-primary: #1A1A1A;
-  --color-text-muted: #6B6560;
+  --color-text-primary: #0B2239;
+  --color-text-muted: #556273;
 }
 
 :root {
-  --background: #FAF9F7;
-  --foreground: #1A1A1A;
+  --background: #FBF8F2;
+  --foreground: #0B2239;
   --card: #FFFFFF;
-  --card-foreground: #1A1A1A;
+  --card-foreground: #0B2239;
   --popover: #FFFFFF;
-  --popover-foreground: #1A1A1A;
-  --primary: #1A1A1A;
-  --primary-foreground: #FAF9F7;
-  --secondary: #F2F0ED;
-  --secondary-foreground: #1A1A1A;
-  --muted: #F2F0ED;
-  --muted-foreground: #6B6560;
-  --accent: #C8102E;
+  --popover-foreground: #0B2239;
+  --primary: #0B2239;
+  --primary-foreground: #FBF8F2;
+  --secondary: #F4EEE3;
+  --secondary-foreground: #0B2239;
+  --muted: #F4EEE3;
+  --muted-foreground: #556273;
+  --accent: #1668D6;
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #E5E2DD;
-  --input: #E5E2DD;
-  --ring: #C8102E;
-  --chart-1: #1A1A1A;
-  --chart-2: #C8102E;
+  --border: #E6DFD2;
+  --input: #D9D1C2;
+  --ring: #1668D6;
+  --chart-1: #0B2239;
+  --chart-2: #1668D6;
   --chart-3: #10B981;
-  --chart-4: #D97706;
-  --chart-5: #6B6560;
-  --radius: 0.5rem;
-  --sidebar: #FAF9F7;
-  --sidebar-foreground: #1A1A1A;
-  --sidebar-primary: #1A1A1A;
-  --sidebar-primary-foreground: #FAF9F7;
-  --sidebar-accent: #F2F0ED;
-  --sidebar-accent-foreground: #1A1A1A;
-  --sidebar-border: #E5E2DD;
-  --sidebar-ring: #C8102E;
+  --chart-4: #C79F63;
+  --chart-5: #556273;
+  --radius: 0.75rem;
+  --sidebar: #FBF8F2;
+  --sidebar-foreground: #0B2239;
+  --sidebar-primary: #0B2239;
+  --sidebar-primary-foreground: #FBF8F2;
+  --sidebar-accent: #F4EEE3;
+  --sidebar-accent-foreground: #0B2239;
+  --sidebar-border: #E6DFD2;
+  --sidebar-ring: #1668D6;
 }
 
 @layer base {
@@ -107,8 +111,49 @@
   }
 }
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    transform: translate(-28px, 26px) rotate(-7deg);
+  }
+}
+
 @layer utilities {
   .focus-accent {
     @apply focus-visible:ring-2 focus-visible:ring-qrd-accent/40 focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+
+  /* Display type: Fraunces with its soft axis turned up */
+  .display {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 100;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* Hero entrance. Runs in CSS so the page is readable before hydration. */
+  .rise {
+    animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+  .letter-in {
+    animation: letter-in 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .letter-in {
+    animation: none;
   }
 }

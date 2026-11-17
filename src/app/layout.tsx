@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Figtree, Fraunces } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/site-metadata";
 import { organizationSchema } from "@/lib/structured-data";
 
-const inter = Inter({
+const figtree = Figtree({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["SOFT", "opsz"],
 });
 
 export const metadata: Metadata = {
@@ -40,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans`}
+        className={`${figtree.variable} ${fraunces.variable} antialiased font-sans`}
       >
         <script
           type="application/ld+json"
