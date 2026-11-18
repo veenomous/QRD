@@ -34,7 +34,7 @@ ${data.message}
     if (process.env.RESEND_API_KEY) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       await resend.emails.send({
-        from: "Qrd Mail Website <noreply@qrdtech.com>",
+        from: "Qrd Mail Website <noreply@qrdmail.com>",
         to: [NOTIFY_EMAIL],
         subject: `Contact: ${data.subject} - ${data.company}`,
         text: emailBody,
