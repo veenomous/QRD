@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Letter Shop for Bills, Statements & Collection Letters",
   description:
     "Qrd Mail is a letter shop. We print, insert, and mail your bills, statements, collection letters, and rent notices, usually within 24–48 hours of getting your file.",
-  url: "https://qrdtech.com",
+  url: "https://qrdmail.com",
   ogImage: "/mail-floor.jpg",
   titleTemplate: "%s | Qrd Mail",
   defaultTitle: "Qrd Mail | Letter Shop for Bills, Statements & Collection Letters",
