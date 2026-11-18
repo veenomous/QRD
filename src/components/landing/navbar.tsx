@@ -28,15 +28,15 @@ export function LandingNavbar() {
     >
       <nav
         aria-label="Main"
-        className="mx-auto flex h-18 max-w-6xl items-center justify-between px-6"
+        className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 md:h-24"
       >
         <a href="#top" className="focus-accent rounded-sm">
           <Image
             src="/logo-qrdmail.png"
             alt="Qrd Mail"
-            width={140}
-            height={43}
-            className="h-11 w-auto"
+            width={235}
+            height={72}
+            className="h-14 w-auto md:h-18"
             priority
           />
         </a>

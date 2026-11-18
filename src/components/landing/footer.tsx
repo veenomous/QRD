@@ -20,9 +20,9 @@ export function LandingFooter() {
             <Image
               src="/logo-qrdmail.png"
               alt="Qrd Mail"
-              width={140}
-              height={43}
-              className="h-10 w-auto"
+              width={209}
+              height={64}
+              className="h-16 w-auto"
             />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-muted">
               A letter shop for bills, statements, collection letters, and rent
@@ -65,7 +65,8 @@ export function LandingFooter() {
         </div>
 
         <p className="mt-10 border-t border-border pt-6 text-sm text-text-muted">
-          &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {siteConfig.name}, a service of Qrd
+          Tech. All rights reserved.
         </p>
       </div>
     </footer>
