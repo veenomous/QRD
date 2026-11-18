@@ -11,30 +11,23 @@ import { Button } from "@/components/ui/button";
 import { Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/data/site-metadata";
+import {
+  frequencyOptions,
+  mailTypeOptions,
+  volumeOptions,
+} from "@/data/quote-options";
 
-const mailTypeOptions = [
-  { value: "bills", label: "Bills and invoices" },
-  { value: "statements", label: "Statements" },
-  { value: "collections", label: "Collection letters" },
-  { value: "rent", label: "Rent bills and notices" },
-  { value: "other", label: "Something else" },
-];
-
-const volumeOptions = [
-  { value: "under-5k", label: "Under 5,000" },
-  { value: "5k-25k", label: "5,000 – 25,000" },
-  { value: "25k-100k", label: "25,000 – 100,000" },
-  { value: "100k-500k", label: "100,000 – 500,000" },
-  { value: "500k-plus", label: "500,000+" },
-];
-
-const frequencyOptions = [
-  { value: "one-time", label: "One-time" },
-  { value: "daily", label: "Daily" },
-  { value: "weekly", label: "Weekly" },
-  { value: "bi-weekly", label: "Bi-weekly" },
-  { value: "monthly", label: "Monthly" },
-];
+// Where the visitor came from, so a lead can be traced back to the ad or link.
+function visitSource() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utmSource: params.get("utm_source") ?? undefined,
+    utmMedium: params.get("utm_medium") ?? undefined,
+    utmCampaign: params.get("utm_campaign") ?? undefined,
+    referrer: document.referrer || undefined,
+    landingPage: window.location.origin + window.location.pathname + window.location.search,
+  };
+}
 
 const pillClass =
   "inline-flex items-center rounded-full border border-input bg-white px-4 py-2.5 text-sm text-ink transition-colors hover:border-ink/50 peer-checked:border-ink peer-checked:bg-ink peer-checked:text-warm-white peer-focus-visible:ring-2 peer-focus-visible:ring-qrd-accent/40 peer-focus-visible:ring-offset-2";
@@ -45,6 +38,7 @@ export function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [trap, setTrap] = useState("");
 
   const {
     register,
@@ -66,7 +60,7 @@ export function QuoteForm() {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, tracking: visitSource(), company_website: trap }),
       });
       if (res.ok) setSubmitted(true);
       else setFailed(true);
@@ -110,6 +104,21 @@ export function QuoteForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="rounded-[1.75rem] bg-white p-6 shadow-[0_30px_60px_-40px_rgba(11,34,57,0.4)] ring-1 ring-ink/[0.06] sm:p-9"
     >
+      {/* Honeypot: hidden from people, filled in by bots */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Company website
+          <input
+            type="text"
+            name="company_website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={trap}
+            onChange={(e) => setTrap(e.target.value)}
+          />
+        </label>
+      </div>
+
       <div className="space-y-8">
         {/* Mail types */}
         <fieldset>
