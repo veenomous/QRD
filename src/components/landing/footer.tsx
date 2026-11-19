@@ -1,11 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { siteConfig } from "@/data/site-metadata";
 
+// Rooted at "/" so they also work from the privacy page
 const links = [
-  { href: "#mail", label: "What we mail" },
-  { href: "#how", label: "How it works" },
-  { href: "#why", label: "Why Qrd Mail" },
-  { href: "#quote", label: "Get a quote" },
+  { href: "/#mail", label: "What we mail" },
+  { href: "/#how", label: "How it works" },
+  { href: "/#why", label: "Why Qrd Mail" },
+  { href: "/#quote", label: "Get a quote" },
 ];
 
 export function LandingFooter() {
@@ -32,13 +34,13 @@ export function LandingFooter() {
 
           <nav aria-label="Footer" className="flex flex-col items-start gap-3 text-sm">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="focus-accent rounded-sm font-medium text-ink/75 transition-colors hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -64,10 +66,18 @@ export function LandingFooter() {
           </address>
         </div>
 
-        <p className="mt-10 border-t border-border pt-6 text-sm text-text-muted">
-          &copy; {new Date().getFullYear()} {siteConfig.name}, a service of Qrd
-          Tech. All rights reserved.
-        </p>
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border pt-6 text-sm text-text-muted">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.name}, a service of
+            Qrd Tech. All rights reserved.
+          </p>
+          <Link
+            href="/privacy"
+            className="focus-accent rounded-sm transition-colors hover:text-ink"
+          >
+            Privacy policy
+          </Link>
+        </div>
       </div>
     </footer>
   );
