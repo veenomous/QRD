@@ -21,7 +21,7 @@ export const siteConfig = {
     "bill printing and mailing",
   ],
   contact: {
-    email: "info@qrdtech.com",
+    email: "info@qrdmail.com",
     phone: "(754) 800-3723",
     phoneHref: "tel:+17548003723",
     address: {

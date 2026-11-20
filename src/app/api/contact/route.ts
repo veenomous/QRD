@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { contactFormSchema } from "@/lib/schemas";
 
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "info@qrdtech.com";
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "info@qrdmail.com";
 
 export async function POST(request: Request) {
   try {

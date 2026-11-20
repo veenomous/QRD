@@ -11,7 +11,7 @@ import {
 // The marketing platform drafts a reply before it answers, so allow for that.
 export const maxDuration = 60;
 
-const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "info@qrdtech.com";
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL ?? "info@qrdmail.com";
 
 // Light per-instance rate limit: 5 submissions per IP per 10 minutes.
 const WINDOW_MS = 10 * 60 * 1000;
